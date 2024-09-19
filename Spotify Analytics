@@ -28,7 +28,7 @@ time_signature integer NOT NULL
 
 #Next, I explored the data using the following SQL. 
 
-#1. First I determined the avg popularity, danceability, and energy by artist and track. 
+#1. What's the avg popularity, danceability, and energy by artist and track? 
 SELECT
 artist_name
 ,track_name
@@ -38,10 +38,25 @@ artist_name
 FROM BIT_DB.spotifydata
 GROUP BY artist_name, track_name
 
-#2. Then I determined who the Top 10 artists are by popularity.
+#2. Which are the Top 10 artists are by popularity?
 SELECT track_name, artist_name, popularity
 FROM BIT_DB.spotifydata
 ORDER BY popularity desc
 LIMIT 10
 
+#3. What songs were the loudest, is there any relation to its popularity?
+SELECT track_name, loudness, popularity
+FROM BIT_DB.Spotifydata
+ORDER BY popularity DESC;
 
+#4. Which artist had the most songs? How many did they have?
+SELECT artist_name, count(track_name)
+FROM BIT_DB.Spotifydata
+GROUP BY popularity
+ORDER BY popularity ASC;
+
+#5. How many songs does each artist have?
+SELECT artist_name, count(track_name) tracks
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY tracks DESC;
